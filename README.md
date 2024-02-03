@@ -42,8 +42,8 @@ Parameters: email, password
 
 ### * User Sign-Up:
 
-POST /user/signup
-Parameters: email, password, is_ops_type (1 for ops user, 0 for client user)
+    -POST /user/signup
+    -Parameters: email, password, is_ops_type (1 for ops user, 0 for client user)
 ### * Upload File:
 
 POST /files/upload
