@@ -55,6 +55,10 @@ The application will be accessible at http://127.0.0.1:5000/.
   This endpoint allows users to create a new account.
 
 
+> **Disclaimer:** It is mandatory to provide **x-access-token** for the below request. If you do not provide it, you are not authorized to access.
+
+
+
 - **Upload File:**
   - *HTTP Method:* `POST`
   - *Endpoint:* `/files/upload`
