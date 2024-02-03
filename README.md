@@ -39,24 +39,25 @@ The application will be accessible at http://127.0.0.1:5000/.
 
 POST /user/login
 Parameters: email, password
-User Sign-Up:
+
+### * User Sign-Up:
 
 POST /user/signup
 Parameters: email, password, is_ops_type (1 for ops user, 0 for client user)
-Upload File:
+### * Upload File:
 
 POST /files/upload
 Parameters: fileName, fileContent
-List Files:
+### * List Files:
 
 GET /files/download
 Returns a list of available files.
-Generate File Download Link:
+### * Generate File Download Link:
 
 POST /files/download
 Parameters: file_id
 Returns a download link.
-Download File:
+### * Download File:
 
 GET /files/download/:encoded
 Download the file using the generated link.
