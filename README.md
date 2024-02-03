@@ -35,30 +35,24 @@ The application will be accessible at http://127.0.0.1:5000/.
 
 ## API Endpoints
 
-## * User Login:
+- **User Login:**
+  - *HTTP Method:* `POST`
+  - *Endpoint:* `/user/login`
+  - *Parameters:*
+    - `email`: The email address of the user.
+    - `password`: The password for authentication.
 
-- **METHOD:** POST
-- **URL:** /user/login
+  This endpoint allows users to log in and obtain an authentication token.
 
-### Parameters
+- **User Sign-Up:**
+  - *HTTP Method:* `POST`
+  - *Endpoint:* `/user/signup`
+  - *Parameters:*
+    - `email`: The email address for user registration.
+    - `password`: The password for the new account.
+    - `is_ops_type`: (1 for ops user, 0 for client user) - Specify the type of user.
 
-- `email`:The email of the user.
-- `password`: The password for the user.
-
-
-## User Sign-Up
-
-### Endpoint
-
-- **Method:** POST
-- **URL:** `/user/signup`
-
-### Parameters
-
-- `email`: The email of the user.
-- `password`: The password for the user.
-- `is_ops_type`: Type of user (1 for ops user, 0 for client user).
-
+  This endpoint allows users to create a new account.
 
 
 - **Upload File:**
