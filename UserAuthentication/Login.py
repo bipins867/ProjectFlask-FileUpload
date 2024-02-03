@@ -67,7 +67,7 @@ class UserSignUp(Resource):
 
             email=data.get('email')
             password=data.get('password')
-            typeUser=data.get('opsType')
+            typeUser=data.get('is_ops_type')
         
             if typeUser==1 or typeUser=='1':
                 typeUser=True

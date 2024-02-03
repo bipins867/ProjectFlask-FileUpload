@@ -6,11 +6,18 @@ from flask_sqlalchemy import SQLAlchemy
 from marshmallow_sqlalchemy import SQLAlchemyAutoSchema
 from UserAuthentication.Login import UserLogin, UserSignUp
 from FileManagement.FileSystem import UploadFile, DownloadFile,DownloadFileLink
+import os
 
 load_dotenv()
 
+DB_HOST=os.getenv('DB_HOST')
+DB_USER=os.getenv('DB_USER')
+DB_PASS=os.getenv('DB_PASS')
+DB_NAME=os.getenv('DB_NAME')
+
+
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:bipinsingh@localhost/flaskdb'
+app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql://{DB_USER}:{DB_PASS}@{DB_HOST}/{DB_NAME}'
 
 db = SQLAlchemy(app)
 

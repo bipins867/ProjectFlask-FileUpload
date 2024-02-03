@@ -35,6 +35,31 @@ def opsUser(f):
 
 def clientUser(f):
     @wraps(f)
+    def decorated(self,*args, **kwargs):
+        token = None
+        if 'x-access-token' in request.headers:
+            token = request.headers['x-access-token']
+        
+        if not token:
+            return jsonify({'status':"Un-Authorized User!"})
+        
+        try:
+            data=jwt.decode(token,JWT_SECRET,algorithms='HS256')
+
+        except:
+
+            return jsonify({'status':"Invalid Signature!"})
+        
+        existing_user=self.User.query.filter_by(email=data['email']).first()
+        
+        if existing_user.is_ops_user:
+            return jsonify({'status':"You are not Authorized to Access this!"})
+
+        return f(self,{'User':existing_user}, *args, **kwargs)
+    return decorated
+
+def downloadUser(f):
+    @wraps(f)
     def decorated(self,encoded,*args, **kwargs):
         token = None
         if 'x-access-token' in request.headers:
@@ -121,7 +146,7 @@ class DownloadFileLink(Resource):
 
         try:
             fileInfo=self.File.query.all()
-            fileData=[[file.id,file.filename] for file in fileInfo]
+            fileData=[{'fileId':file.id,'filename':file.filename} for file in fileInfo]
             
             return jsonify({'files':fileData})
         except:
@@ -165,7 +190,7 @@ class DownloadFile(Resource):
         self.File=File
         self.FileLink=FileLink
 
-    @clientUser
+    @downloadUser
     def get(self,info):
         
         crrUser=info['User']
