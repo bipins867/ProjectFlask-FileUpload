@@ -42,8 +42,8 @@ Parameters: email, password
 
 ### * User Sign-Up:
 
-    -POST /user/signup
-    -Parameters: email, password, is_ops_type (1 for ops user, 0 for client user)
+POST /user/signup
+Parameters: email, password, is_ops_type (1 for ops user, 0 for client user)
 ### * Upload File:
 
 POST /files/upload
@@ -61,3 +61,17 @@ Returns a download link.
 
 GET /files/download/:encoded
 Download the file using the generated link.
+
+## Authentication
+
+To access certain endpoints, use the x-access-token header with the JWT token obtained after logging in.
+
+### Ops User Authorization 
+
+SignUp,Login, Upload File
+
+
+### Client User Authorization
+
+SignUp,Login, Download File
+
